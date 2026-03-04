@@ -1,0 +1,144 @@
+---
+const services = [
+  {
+    id: "trial-lesson",
+    title: "Trial Lesson",
+    duration: "30 min",
+    price: 6,
+    description: "Perfect for first-time students. Get to know my teaching style and discuss your learning goals.",
+    popular: false,
+  },
+  {
+    id: "one-on-one-tutoring",
+    title: "One-on-One Spanish Tutoring",
+    duration: "50 min",
+    price: 16,
+    description: "Personalized lessons tailored to your level, pace, and specific learning objectives.",
+    popular: true,
+  },
+  {
+    id: "conversational-spanish",
+    title: "Conversational Spanish",
+    duration: "50 min",
+    price: 16,
+    description: "Focus on practical conversation skills, pronunciation, and real-world communication.",
+    popular: false,
+  },
+  {
+    id: "test-preparation",
+    title: "Spanish Test Preparation",
+    duration: "1h 40min",
+    price: 30,
+    description: "Intensive preparation for Spanish proficiency exams like DELE, SIELE, or academic tests.",
+    popular: false,
+  },
+  {
+    id: "lesson-package",
+    title: "Spanish Lessons Package",
+    duration: "4 sessions",
+    price: 60,
+    description: "Bundle of 4 lessons at a discounted rate. Perfect for consistent, structured learning.",
+    popular: false,
+  },
+];
+---
+
+<section id="services" class="py-20 px-4 bg-gradient-to-b from-cream to-white">
+  <div class="max-w-6xl mx-auto">
+    <!-- Section Header -->
+    <div class="text-center mb-16">
+      <span class="text-accent text-sm tracking-widest uppercase font-medium">Services</span>
+      <h2 class="font-display text-4xl md:text-5xl font-bold mt-2 text-navy">
+        Lesson Plans
+      </h2>
+      <p class="text-muted mt-4 text-lg max-w-2xl mx-auto">
+        Choose the plan that fits your learning goals. All lessons are conducted live via Zoom.
+      </p>
+    </div>
+
+    <!-- Services Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map((service) => (
+        <div class={`relative bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 ${service.popular ? 'ring-2 ring-accent' : ''}`}>
+          {service.popular && (
+            <div class="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span class="bg-accent text-white text-xs font-semibold px-4 py-1 rounded-full">
+                Most Popular
+              </span>
+            </div>
+          )}
+          
+          <h3 class="font-display text-xl font-bold mb-2 mt-2 text-navy">
+            {service.title}
+          </h3>
+          
+          <div class="flex items-baseline gap-1 mb-4">
+            <span class="text-3xl font-bold text-accent">${service.price}</span>
+            <span class="text-muted text-sm">USD</span>
+          </div>
+          
+          <div class="flex items-center gap-2 text-muted mb-4">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>{service.duration}</span>
+          </div>
+          
+          <p class="text-secondary mb-6 text-sm leading-relaxed">
+            {service.description}
+          </p>
+          
+          <button 
+            data-booking={service.id}
+            class={`book-now-btn w-full block text-center py-3 rounded-full font-semibold transition-all duration-300 cursor-pointer ${
+              service.popular 
+                ? 'bg-accent text-white hover:bg-accent/90' 
+                : 'bg-cream text-primary hover:bg-light-gray/30'
+            }`}
+          >
+            Book Now
+          </button>
+        </div>
+      ))}
+    </div>
+
+    <!-- Additional Info -->
+    <div class="mt-12 text-center">
+      <p class="text-muted">
+        Need a custom plan? 
+        <a href="#contact" class="text-accent font-semibold hover:underline">Contact me</a> 
+        to discuss your specific needs.
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.book-now-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const serviceId = btn.getAttribute('data-booking');
+      const bookingOption = document.querySelector(`[data-service="${serviceId}"]`);
+      
+      if (bookingOption) {
+        // Scroll to contact section
+        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+        
+        // Highlight the option after scrolling
+        setTimeout(() => {
+          // Remove any existing highlights
+          document.querySelectorAll('[data-service]').forEach(el => {
+            el.classList.remove('ring-4', 'ring-green-400', 'scale-105');
+          });
+          
+          // Add highlight to selected option
+          bookingOption.classList.add('ring-4', 'ring-green-400', 'scale-105');
+          
+          // Remove highlight after 2 seconds
+          setTimeout(() => {
+            bookingOption.classList.remove('ring-4', 'ring-green-400', 'scale-105');
+          }, 2000);
+        }, 600);
+      }
+    });
+  });
+</script>
