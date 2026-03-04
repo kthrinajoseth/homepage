@@ -1,22 +1,8 @@
 ---
+import aboutData from '../content/about.json';
+
 const base = import.meta.env.BASE_URL;
-
-const benefits = [
-  "Experience teaching students from diverse cultures and age groups",
-  "Personalized lessons tailored to your pace and learning style",
-  "Strong focus on pronunciation and correct usage",
-  "Ongoing support to help you progress with confidence",
-  "Convenient live classes via Zoom - learn from anywhere",
-];
-
-const expectations = [
-  "Start reading in Spanish from the very beginning",
-  "Apply pronunciation rules from the first lesson",
-  "Gradually begin to think in Spanish",
-  "Hold a basic conversation within two weeks",
-  "Learn grammar progressively so it sticks naturally",
-  "Get plenty of practice - visual, auditory, written, and spoken",
-];
+const { title, subtitle, intro1, intro2, intro3, approach, benefits, expectations } = aboutData;
 ---
 
 <section id="about" class="py-20 px-4 bg-white">
@@ -25,9 +11,9 @@ const expectations = [
     <div class="text-center mb-16">
       <span class="text-accent text-sm tracking-widest uppercase font-medium">About Me</span>
       <h2 class="font-display text-4xl md:text-5xl font-bold mt-2 text-navy">
-        Hello! I'm Kathrina
+        {title}
       </h2>
-      <p class="text-muted mt-4 text-lg">Your future Spanish teacher</p>
+      <p class="text-muted mt-4 text-lg">{subtitle}</p>
     </div>
 
     <!-- About Content -->
@@ -48,18 +34,9 @@ const expectations = [
 
       <!-- Text Content -->
       <div>
-        <p class="text-secondary text-lg leading-relaxed mb-6">
-          Welcome to my teaching space! I'm from <strong>Colombia</strong>, a native Spanish speaker with over 
-          <strong>5 years of experience</strong> helping students of all ages - from 3-year-old children to adults - 
-          learn and enjoy the Spanish language.
-        </p>
-        <p class="text-secondary text-lg leading-relaxed mb-6">
-          My classes are taught live via <strong>Zoom</strong>, allowing you to learn comfortably from anywhere in the world.
-        </p>
-        <p class="text-secondary text-lg leading-relaxed">
-          In my lessons, you will learn Spanish in a structured yet natural way, with a strong focus on 
-          <strong>practical fluency from day one</strong>.
-        </p>
+        <p class="text-secondary text-lg leading-relaxed mb-6">{intro1}</p>
+        <p class="text-secondary text-lg leading-relaxed mb-6">{intro2}</p>
+        <p class="text-secondary text-lg leading-relaxed">{intro3}</p>
       </div>
     </div>
 
@@ -67,9 +44,7 @@ const expectations = [
     <div class="bg-cream rounded-3xl p-8 md:p-12 mb-16">
       <h3 class="font-display text-3xl font-bold mb-6 text-center text-navy">My Approach</h3>
       <p class="text-secondary text-lg leading-relaxed text-center max-w-3xl mx-auto">
-        I combine the spontaneity of <strong>natural conversation</strong> with the academic structure needed to 
-        truly master the language. I work with teaching materials tailored to your level and goals, ensuring a 
-        learning experience that is <strong>effective, engaging, and professional</strong>.
+        {approach}
       </p>
     </div>
 

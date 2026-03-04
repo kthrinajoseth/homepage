@@ -1,48 +1,20 @@
 ---
-const contactInfo = {
-  location: "Santa Marta, Colombia",
-  phone: "+57 3028500648",
-  email: "kthrinajoseth@gmail.com",
-  whatsappNumber: "573028500648",
-};
+import contactInfo from '../content/contact.json';
+import trialLesson from '../content/services/trial-lesson.json';
+import oneOnOne from '../content/services/one-on-one-tutoring.json';
+import conversational from '../content/services/conversational-spanish.json';
+import testPrep from '../content/services/test-preparation.json';
+import lessonPackage from '../content/services/lesson-package.json';
 
-const services = [
-  {
-    id: "trial-lesson",
-    title: "Trial Lesson",
-    duration: "30 min",
-    price: 6,
-    popular: false,
-  },
-  {
-    id: "one-on-one-tutoring",
-    title: "One-on-One Spanish Tutoring",
-    duration: "50 min",
-    price: 16,
-    popular: true,
-  },
-  {
-    id: "conversational-spanish",
-    title: "Conversational Spanish",
-    duration: "50 min",
-    price: 16,
-    popular: false,
-  },
-  {
-    id: "test-preparation",
-    title: "Spanish Test Preparation",
-    duration: "1h 40min",
-    price: 30,
-    popular: false,
-  },
-  {
-    id: "lesson-package",
-    title: "Spanish Lessons Package",
-    duration: "4 sessions",
-    price: 60,
-    popular: false,
-  },
+const servicesData = [
+  { id: "trial-lesson", ...trialLesson },
+  { id: "one-on-one-tutoring", ...oneOnOne },
+  { id: "conversational-spanish", ...conversational },
+  { id: "test-preparation", ...testPrep },
+  { id: "lesson-package", ...lessonPackage },
 ];
+
+const services = servicesData.sort((a, b) => a.order - b.order);
 
 const getWhatsAppLink = (serviceName: string, price: number, duration: string) => {
   const message = encodeURIComponent(`Hi Kathrina! I'm interested in booking a ${serviceName} (${duration} - $${price} USD). Could you help me schedule a lesson?`);
@@ -58,7 +30,7 @@ const getWhatsAppLink = (serviceName: string, price: number, duration: string) =
       <h2 class="font-display text-4xl md:text-5xl font-bold mt-2 text-white">
         Contact Me
       </h2>
-            <p class="text-light-gray mt-4 text-lg">
+      <p class="text-light-gray mt-4 text-lg">
         Ready to start your Spanish journey? Let's connect!
       </p>
     </div>
@@ -92,7 +64,7 @@ const getWhatsAppLink = (serviceName: string, price: number, duration: string) =
             </div>
             <div>
               <h4 class="font-semibold text-lg">Phone</h4>
-              <a href="tel:+573028500648" class="text-light-gray hover:text-accent transition-colors">
+              <a href={`tel:+${contactInfo.whatsappNumber}`} class="text-light-gray hover:text-accent transition-colors">
                 {contactInfo.phone}
               </a>
             </div>

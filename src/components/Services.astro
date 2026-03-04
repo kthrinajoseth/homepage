@@ -1,46 +1,21 @@
 ---
-const services = [
-  {
-    id: "trial-lesson",
-    title: "Trial Lesson",
-    duration: "30 min",
-    price: 6,
-    description: "Perfect for first-time students. Get to know my teaching style and discuss your learning goals.",
-    popular: false,
-  },
-  {
-    id: "one-on-one-tutoring",
-    title: "One-on-One Spanish Tutoring",
-    duration: "50 min",
-    price: 16,
-    description: "Personalized lessons tailored to your level, pace, and specific learning objectives.",
-    popular: true,
-  },
-  {
-    id: "conversational-spanish",
-    title: "Conversational Spanish",
-    duration: "50 min",
-    price: 16,
-    description: "Focus on practical conversation skills, pronunciation, and real-world communication.",
-    popular: false,
-  },
-  {
-    id: "test-preparation",
-    title: "Spanish Test Preparation",
-    duration: "1h 40min",
-    price: 30,
-    description: "Intensive preparation for Spanish proficiency exams like DELE, SIELE, or academic tests.",
-    popular: false,
-  },
-  {
-    id: "lesson-package",
-    title: "Spanish Lessons Package",
-    duration: "4 sessions",
-    price: 60,
-    description: "Bundle of 4 lessons at a discounted rate. Perfect for consistent, structured learning.",
-    popular: false,
-  },
+// Import all service JSON files
+import trialLesson from '../content/services/trial-lesson.json';
+import oneOnOne from '../content/services/one-on-one-tutoring.json';
+import conversational from '../content/services/conversational-spanish.json';
+import testPrep from '../content/services/test-preparation.json';
+import lessonPackage from '../content/services/lesson-package.json';
+
+const servicesData = [
+  { id: "trial-lesson", ...trialLesson },
+  { id: "one-on-one-tutoring", ...oneOnOne },
+  { id: "conversational-spanish", ...conversational },
+  { id: "test-preparation", ...testPrep },
+  { id: "lesson-package", ...lessonPackage },
 ];
+
+// Sort by order
+const services = servicesData.sort((a, b) => a.order - b.order);
 ---
 
 <section id="services" class="py-20 px-4 bg-gradient-to-b from-cream to-white">

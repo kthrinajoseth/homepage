@@ -1,0 +1,52 @@
+backend:
+  name: github
+  repo: kthrinajoseth/homepage
+  branch: main
+
+media_folder: "public/images"
+public_folder: "/homepage/images"
+
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "contact"
+        label: "Contact Information"
+        file: "src/content/contact.json"
+        fields:
+          - { label: "Location", name: "location", widget: "string" }
+          - { label: "Phone", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "WhatsApp Number (with country code, no +)", name: "whatsappNumber", widget: "string" }
+
+      - name: "about"
+        label: "About Section"
+        file: "src/content/about.json"
+        fields:
+          - { label: "Title", name: "title", widget: "string", default: "Hello! I'm Kathrina" }
+          - { label: "Subtitle", name: "subtitle", widget: "string", default: "Your future Spanish teacher" }
+          - { label: "Intro Paragraph 1", name: "intro1", widget: "text" }
+          - { label: "Intro Paragraph 2", name: "intro2", widget: "text" }
+          - { label: "Intro Paragraph 3", name: "intro3", widget: "text" }
+          - { label: "My Approach", name: "approach", widget: "text" }
+          - label: "Why Learn With Me"
+            name: "benefits"
+            widget: "list"
+            field: { label: "Benefit", name: "benefit", widget: "string" }
+          - label: "What to Expect"
+            name: "expectations"
+            widget: "list"
+            field: { label: "Expectation", name: "expectation", widget: "string" }
+
+  - name: "services"
+    label: "Services"
+    folder: "src/content/services"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Duration", name: "duration", widget: "string" }
+      - { label: "Price (USD)", name: "price", widget: "number", value_type: "int" }
+      - { label: "Description", name: "description", widget: "text" }
+      - { label: "Popular", name: "popular", widget: "boolean", default: false }
+      - { label: "Sort Order", name: "order", widget: "number", value_type: "int", default: 0 }
