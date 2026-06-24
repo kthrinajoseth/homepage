@@ -1,17 +1,13 @@
 ---
 import contactInfo from '../content/contact.json';
-import trialLesson from '../content/services/trial-lesson.json';
 import oneOnOne from '../content/services/one-on-one-tutoring.json';
 import conversational from '../content/services/conversational-spanish.json';
 import testPrep from '../content/services/test-preparation.json';
-import lessonPackage from '../content/services/lesson-package.json';
 
 const servicesData = [
-  { id: "trial-lesson", ...trialLesson },
   { id: "one-on-one-tutoring", ...oneOnOne },
   { id: "conversational-spanish", ...conversational },
   { id: "test-preparation", ...testPrep },
-  { id: "lesson-package", ...lessonPackage },
 ];
 
 const services = servicesData.sort((a, b) => a.order - b.order);
